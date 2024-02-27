@@ -18,7 +18,7 @@ public class SalaryServiceImpl implements SalaryService {
 
     private SalaryDao salaryDao;
 
-    private SalaryServiceImpl(SalaryDao salaryDao) {
+    public SalaryServiceImpl(SalaryDao salaryDao) {
         this.salaryDao = salaryDao;
     }
 
