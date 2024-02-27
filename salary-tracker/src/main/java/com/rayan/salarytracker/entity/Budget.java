@@ -37,6 +37,10 @@ public class Budget {
     @Basic
     @Column(name = "budget_status", nullable = true)
     private boolean budgetStatus;
+
+    @Basic
+    @Column(name = "bank_account", nullable = true, length = 20)
+    private String bankAccount;
     /* Ends fields */
 
     /* Begin Relationships */
@@ -51,10 +55,12 @@ public class Budget {
     public Budget() {
     }
 
-    public Budget(double budgetAmount, String budgetDescription, boolean budgetStatus, Salary salary) {
+    public Budget(double budgetAmount, String budgetDescription, boolean budgetStatus, String bankAccount,
+            Salary salary) {
         this.budgetAmount = budgetAmount;
         this.budgetDescription = budgetDescription;
         this.budgetStatus = budgetStatus;
+        this.bankAccount = bankAccount;
         this.salary = salary;
     }
 
@@ -80,6 +86,14 @@ public class Budget {
 
     public void setBudgetDescription(String budgetDescription) {
         this.budgetDescription = budgetDescription;
+    }
+
+    public String getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount;
     }
 
     public boolean isBudgetStatus() {

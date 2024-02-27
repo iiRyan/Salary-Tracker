@@ -1,4 +1,4 @@
-package com.rayan.salarytracker.dao.utility;
+package com.rayan.salarytracker.utility;
 
 import com.rayan.salarytracker.dao.BudgetDao;
 import com.rayan.salarytracker.dao.CategoryDao;
@@ -15,7 +15,7 @@ public class OperationUtility {
 
     /* Begin User Operations */
     public static void userOperations(UserDao userDao) {
-        // createUsers(userDao);
+        createUsers(userDao);
         // updateUser(userDao);
         // deleteUser(userDao);
         // fetchUsers(userDao);
@@ -51,7 +51,7 @@ public class OperationUtility {
 
     /* Begin User Salary Operations */
     public static void salaryOperations(SalaryDao salaryDao, UserDao userDao) {
-        // createSalary(salaryDao, userDao);
+        createSalary(salaryDao, userDao);
         // updateSalary(salaryDao);
         // deleteSalary(salaryDao);
         // fetchAllSalary(salaryDao);
@@ -92,7 +92,7 @@ public class OperationUtility {
 
     /* Begin User Budget Operations */
     public static void budgetOperations(BudgetDao budgetDao, SalaryDao salaryDao) {
-        // createBudget(budgetDao, salaryDao);
+        createBudget(budgetDao, salaryDao);
         // updateBudget(budgetDao);
         // deleteBudget(budgetDao);
         // fetchBudgets(budgetDao);
@@ -116,13 +116,13 @@ public class OperationUtility {
 
     private static void createBudget(BudgetDao budgetDao, SalaryDao salaryDao) {
         Salary salary = salaryDao.findById(1L).orElseThrow(() -> new EntityNotFoundException("Salary Not Found"));
-        Budget budget = new Budget(2200, "Rent", true, salary);
+        Budget budget = new Budget(2200, "Rent", true, "STCPay", salary);
         budgetDao.save(budget);
 
-        Budget budget2 = new Budget(600, "STC Bails", true, salary);
+        Budget budget2 = new Budget(600, "STC Bails", true, "Alrajhi", salary);
         budgetDao.save(budget2);
 
-        Budget budget3 = new Budget(3075, "Bank Loan", false, salary);
+        Budget budget3 = new Budget(3075, "Bank Loan", false, "ALinma", salary);
         budgetDao.save(budget3);
     }
     /* Ends User Budget Operations */

@@ -9,7 +9,7 @@ import com.rayan.salarytracker.dao.BudgetDao;
 import com.rayan.salarytracker.dao.CategoryDao;
 import com.rayan.salarytracker.dao.SalaryDao;
 import com.rayan.salarytracker.dao.UserDao;
-import com.rayan.salarytracker.dao.utility.OperationUtility;
+import com.rayan.salarytracker.utility.OperationUtility;
 
 @SpringBootApplication
 public class SalaryTrackerApplication implements CommandLineRunner {
@@ -29,7 +29,9 @@ public class SalaryTrackerApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// OperationUtility.userOperations(userDao);.
+		// OperationUtility.userOperations(userDao);
+		// OperationUtility.salaryOperations(salaryDao, userDao);
+		// OperationUtility.budgetOperations(budgetDao, salaryDao);
 		// OperationUtility.categoryOperations(categoryDao, budgetDao);
 	}
 }
