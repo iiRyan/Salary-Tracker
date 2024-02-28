@@ -7,8 +7,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.rayan.salarytracker.dao.BudgetDao;
 import com.rayan.salarytracker.entity.Budget;
+import com.rayan.salarytracker.entity.Category;
 import com.rayan.salarytracker.entity.Salary;
 import com.rayan.salarytracker.service.BudgetService;
+import com.rayan.salarytracker.service.CategoryService;
+import com.rayan.salarytracker.service.SalaryService;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -17,9 +20,11 @@ import jakarta.persistence.EntityNotFoundException;
 public class BudgetServiceImpl implements BudgetService {
 
     private BudgetDao budgetDao;
+    CategoryService categoryService;
 
-    public BudgetServiceImpl(BudgetDao budgetDao) {
+    public BudgetServiceImpl(BudgetDao budgetDao, CategoryService categoryService) {
         this.budgetDao = budgetDao;
+        this.categoryService = categoryService;
     }
 
     @Override
@@ -47,6 +52,13 @@ public class BudgetServiceImpl implements BudgetService {
 
     @Override
     public void removeBudget(Long budgetId) {
+        // You have to delete the Salary associated with the Category first.
+        Budget budget = loadBudgetById(budgetId);
+        if (budget.getCategoryList() != null) {
+            for (Category category : budget.getCategoryList()) {
+                categoryService.removeCategory(category.getCategoryId());
+            }
+        }
         budgetDao.deleteById(budgetId);
     }
 

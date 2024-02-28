@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.rayan.salarytracker.dao.SalaryDao;
+import com.rayan.salarytracker.entity.Budget;
 import com.rayan.salarytracker.entity.Salary;
 import com.rayan.salarytracker.entity.User;
+import com.rayan.salarytracker.service.BudgetService;
 import com.rayan.salarytracker.service.SalaryService;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -17,9 +19,11 @@ import jakarta.persistence.EntityNotFoundException;
 public class SalaryServiceImpl implements SalaryService {
 
     private SalaryDao salaryDao;
+    private BudgetService budgetService;
 
-    public SalaryServiceImpl(SalaryDao salaryDao) {
+    public SalaryServiceImpl(SalaryDao salaryDao, BudgetService budgetService) {
         this.salaryDao = salaryDao;
+        this.budgetService = budgetService;
     }
 
     @Override
@@ -29,7 +33,7 @@ public class SalaryServiceImpl implements SalaryService {
     }
 
     @Override
-    public Salary createSalary(double salary, String salaryMonth, User user) {
+    public Salary createSalary(int salary, String salaryMonth, User user) {
         return salaryDao.save(new Salary(salary, salaryMonth, user));
     }
 
@@ -45,6 +49,11 @@ public class SalaryServiceImpl implements SalaryService {
 
     @Override
     public void removeSalary(Long salaryId) {
+        // You have to delete the Budgets associated with the salary first.
+        Salary salary = loadSalaryById(salaryId);
+        for (Budget budget : salary.getBudgetList()) {
+            budgetService.removeBudget(budget.getBudgetId());
+        }
         salaryDao.deleteById(salaryId);
     }
 

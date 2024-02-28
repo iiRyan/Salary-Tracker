@@ -69,7 +69,7 @@ public class OperationUtility {
 
     private static void updateSalary(SalaryDao salaryDao) {
         Salary salary = salaryDao.findById(1L).orElseThrow(() -> new EntityNotFoundException("Salary Not Found"));
-        salary.setSalary(14350.4);
+        salary.setSalary(14350);
         salaryDao.save(salary);
 
     }

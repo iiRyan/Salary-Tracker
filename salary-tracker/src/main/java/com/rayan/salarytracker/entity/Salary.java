@@ -28,7 +28,7 @@ public class Salary {
 
     @Basic
     @Column(name = "salary", nullable = false, precision = 10)
-    private double salary;
+    private int salary;
 
     @Basic
     @Column(name = "salary_month", nullable = false, length = 10)
@@ -47,7 +47,7 @@ public class Salary {
     public Salary() {
     }
 
-    public Salary(double salary, String salaryMonth, User user) {
+    public Salary(int salary, String salaryMonth, User user) {
         this.salary = salary;
         this.salaryMonth = salaryMonth;
         this.user = user;
@@ -61,11 +61,11 @@ public class Salary {
         this.salaryId = salaryId;
     }
 
-    public double getSalary() {
+    public int getSalary() {
         return this.salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 

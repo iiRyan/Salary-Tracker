@@ -8,7 +8,7 @@ import com.rayan.salarytracker.entity.User;
 public interface SalaryService {
     Salary loadSalaryById(Long salaryId);
 
-    Salary createSalary(double salary, String salaryMonth, User user);
+    Salary createSalary(int salary, String salaryMonth, User user);
 
     Salary updateSalary(Salary salary);
 

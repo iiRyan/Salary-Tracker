@@ -129,4 +129,12 @@ public class Budget {
         categoryList.add(tempCategory);
         tempCategory.setBudget(this);
     }
+
+    public List<Category> getCategoryList() {
+        return categoryList;
+    }
+
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
+    }
 }

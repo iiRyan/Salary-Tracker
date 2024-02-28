@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Salaries</title>
+</head>
+
+<body>
+    <div layout:fragment="content1">
+
+
+        <!-- component -->
+        <div class=" flex items-center justify-center p-11 ">
+            <div>
+                <h1 class="mb-1 font-bold text-3xl flex gap-1 items-baseline font-mono">Update Salary<span
+                        class="text-sm text-purple-700"></sm>
+                </h1>
+                <form th:action="@{save}" th:object="${salary}" method="POST">
+                    <div
+                        class="grid max-w-3xl gap-2 py-10 px-8 sm:grid-cols-2 bg-white rounded-md border-t-4 border-stone-800">
+                        <!-- Add hidden form field to handle update, It's required for Update -->
+                        <!-- This binds to the model attribute Tells your app which employee to update  -->
+                        <input type="hidden" th:field="*{salaryId}" />
+                        <input type="hidden" th:field="*{user.userId}" />
+
+                        <div class="grid">
+                            <div
+                                class="bg-white flex min-h-[60px] flex-col-reverse justify-center rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:shadow-inner ">
+                                <input type="number" th:field="*{salary}" name="salary" id="salary" min="1" max="99999"
+                                    class="peer block w-full border-0 p-0 text-base text-gray-900 placeholder-gray-400 focus:ring-0"
+                                    placeholder="Salary" />
+                                <label html="salary"
+                                    class="block transform text-xs font-bold uppercase text-gray-400 transition-opacity, duration-200 peer-placeholder-shown:h-0 peer-placeholder-shown:-translate-y-full peer-placeholder-shown:opacity-0">Salary</label>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div
+                                class="bg-white flex min-h-[60px] flex-col-reverse justify-center rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:shadow-inner">
+                                <input type="text" th:field="*{salaryMonth}" readonly name="month" id="month"
+                                    class="peer block w-full border-0 p-0 text-base text-gray-900 placeholder-gray-400 focus:ring-0 cursor-not-allowed"
+                                    placeholder="month" />
+                                <label html="month"
+                                    class="block transform text-xs font-bold uppercase text-gray-400 transition-opacity, duration-200 peer-placeholder-shown:h-0 peer-placeholder-shown:-translate-y-full peer-placeholder-shown:opacity-0">Month</label>
+                            </div>
+                        </div>
+
+                        <button type="submit"
+                            class="mt-4 bg-stone-700 text-white py-2 px-6 rounded-md hover:bg-stone-800 ">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+</body>
+
+</html>
