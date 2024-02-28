@@ -28,7 +28,7 @@ public class Budget {
 
     @Basic
     @Column(name = "budget_amount", nullable = true, precision = 10)
-    private double budgetAmount;
+    private int budgetAmount;
 
     @Basic
     @Column(name = "budget_description", nullable = true, length = 80)
@@ -55,7 +55,7 @@ public class Budget {
     public Budget() {
     }
 
-    public Budget(double budgetAmount, String budgetDescription, boolean budgetStatus, String bankAccount,
+    public Budget(int budgetAmount, String budgetDescription, boolean budgetStatus, String bankAccount,
             Salary salary) {
         this.budgetAmount = budgetAmount;
         this.budgetDescription = budgetDescription;
@@ -72,11 +72,11 @@ public class Budget {
         this.budgetId = budgetId;
     }
 
-    public double getBudgetAmount() {
+    public int getBudgetAmount() {
         return this.budgetAmount;
     }
 
-    public void setBudgetAmount(double budgetAmount) {
+    public void setBudgetAmount(int budgetAmount) {
         this.budgetAmount = budgetAmount;
     }
 

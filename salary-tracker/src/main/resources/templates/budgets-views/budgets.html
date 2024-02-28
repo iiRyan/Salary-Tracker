@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Salaries</title>
+</head>
+
+<body>
+    <div layout:fragment="content1">
+
+
+        <!-- component -->
+        <div>
+            <div class="container p-10 mx-auto">
+                <h1 class="text-4xl font-bold text-gray-700 mb-6">Budget</h1>
+                <div>
+                    <h3 class="text-lg font-semibold">YOUR BALANCE:</h3>
+                    <p th:text="${salary.getSalary()}" class="text-5xl mb-6">2,550.53</p>
+                    <div class="grid grid-cols-2 bg-white mb-6 border-2 p-6 rounded-md">
+                        <div class="flex flex-col items-center">
+                            <p class="text-lg font-semibold">Remaining:</p>
+                            <p class="text-5xl font-semibold text-green-500">1,045.50</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <p class="text-lg font-semibold">EXPENSES:</p>
+                            <p class="text-5xl font-semibold text-red-500">623,50</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-semibold text-gray-700 mb-2">Expenses:</h2>
+                        <div th:each="budget, stat : ${budgets}"
+                            class="flex justify-between border-2 p-10 bg-white rounded-md">
+                            <p th:text="${budget.getBudgetDescription()}" class="text-md" style="flex: 1;"></p>
+
+                            <div class="flex space-x-4" style="flex: 1;">
+                                <p th:text="${budget.getBudgetStatus()}" class="text-md"></p>
+                            </div>
+
+                            <div class="flex space-x-4" style="flex: 1;">
+                                <p th:text="${budget.getBankAccount()}" class="text-md"></p>
+                            </div>
+
+                            <div class="flex space-x-4">
+                                <p th:text="${budget.getBudgetAmount()}" class="text-lg"></p>
+                                <div class="flex space-x-1">
+                                    <a><i class="fa-regular fa-pen-to-square" style="color: #198754;"></i></a>
+                                    <a onclick="return confirm('Are you sure you want to delete?')"><i
+                                            class="fa-regular fa-trash-can" style="color: #DC3545;"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <Form class="my-6">
+                            <h2 class="text-xl font-semibold text-gray-700 mb-2">Add new transaction</h3>
+                                <div class=" flex justify-between bg-white items-center">
+                                    <div class=" md:p-10 py-2 px-4 w-2/3">
+                                        <p class="text-md ">Description</p>
+                                        <div class="flex items-center">
+                                            <input type="text" placeholder="New shinny thing"
+                                                class="p-2 w-full border-2 rounded-md outline-none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 ml-2" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class=" md:p-10 py-2 px-4">
+                                        <p class="text-md ">Value</p>
+                                        <div class="flex items-center">
+                                            <input type="text" placeholder="100.00"
+                                                class="p-2 border-2 w-full rounded-md outline-none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 ml-2" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 p-2 space-x-2">
+                                    <button class="text-md bg-red-500 px-5 py-2 rounded-md text-white">Cancle</button>
+                                    <sapan class="text-lg font-semibold">Or</sapan>
+                                    <button class="text-md bg-green-500 px-8 py-2 rounded-md text-white">Ok</button>
+                                </div>
+                        </Form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

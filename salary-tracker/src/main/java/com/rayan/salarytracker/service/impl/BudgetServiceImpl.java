@@ -35,7 +35,7 @@ public class BudgetServiceImpl implements BudgetService {
     }
 
     @Override
-    public Budget createBudget(double budgetAmount, String budgetDescription, boolean budgetStatus, String bankAccount,
+    public Budget createBudget(int budgetAmount, String budgetDescription, boolean budgetStatus, String bankAccount,
             Salary salary) {
         return budgetDao.save(new Budget(budgetAmount, budgetDescription, budgetStatus, bankAccount, salary));
     }
@@ -60,6 +60,11 @@ public class BudgetServiceImpl implements BudgetService {
             }
         }
         budgetDao.deleteById(budgetId);
+    }
+
+    @Override
+    public List<Budget> getBudgetsBySalaryId(Long salaryId) {
+        return budgetDao.getBudgetsBySalaryId(salaryId);
     }
 
 }

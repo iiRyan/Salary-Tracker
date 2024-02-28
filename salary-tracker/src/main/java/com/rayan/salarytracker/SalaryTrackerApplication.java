@@ -52,6 +52,12 @@ public class SalaryTrackerApplication {
 	// salary1);
 	// Budget budget2 = budgetService.createBudget(6000, "Bank", true, "STCPay",
 	// salary);
+	// Budget budget3 = budgetService.createBudget(458, "Bank", true, "STCPay",
+	// salary);
+	// Budget budget4 = budgetService.createBudget(6000, "Bank", true, "STCPay",
+	// salary);
+	// Budget budget5 = budgetService.createBudget(6000, "Bank", true, "STCPay",
+	// salary);
 
 	// Category category = categoryService.createCategory("Personal", budget2);
 	// Category category1 = categoryService.createCategory("Random Expenses",

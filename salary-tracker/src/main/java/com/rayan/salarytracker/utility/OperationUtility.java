@@ -110,7 +110,7 @@ public class OperationUtility {
 
     private static void updateBudget(BudgetDao budgetDao) {
         Budget budget = budgetDao.findById(1L).orElseThrow(() -> new EntityNotFoundException("Budget Not Found"));
-        budget.setBudgetAmount(555.55);
+        budget.setBudgetAmount(555);
         budgetDao.save(budget);
     }
 

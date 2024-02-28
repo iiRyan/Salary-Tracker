@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rayan.salarytracker.entity.Salary;
 import com.rayan.salarytracker.service.SalaryService;
-import com.rayan.salarytracker.service.UserService;
 
 @Controller
 @RequestMapping("salaries")

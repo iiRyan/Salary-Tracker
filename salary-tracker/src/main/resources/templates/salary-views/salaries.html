@@ -42,7 +42,7 @@
                                     Salary</h2>
                                 <h3 class="mt-2 text-xl font-bold text-neutral-950 text-left"
                                     th:text="${salary.getSalary()}"></h3>
-                                <div class="flex items-center gap-5">
+                                <div class="flex items-center gap-3 pb-3">
 
                                     <a th:href="@{/salaries/delete(salaryId=${salary.getSalaryId()})}"
                                         onclick="return confirm('Are you sure you want to delete?')"><i
@@ -52,8 +52,8 @@
                                             class="fa-regular fa-pen-to-square" style="color: #198754;"></i></a>
 
                                 </div>
-                                <button
-                                    class="text-sm mt-6 px-4 py-2 bg-stone-800 text-white rounded-lg  tracking-wider hover:bg-bg-stone-900 dark:hover:bg-stone-900  outline-none">Budgets</button>
+                                <a th:href="@{/budgets/index(salaryId=${salary.getSalaryId()})}"
+                                    class="text-sm mt-6 px-4 py-2 bg-stone-800 text-white rounded-lg  tracking-wider hover:bg-bg-stone-900 dark:hover:bg-stone-900  outline-none">Budgets</a>
                             </div>
                             <div
                                 class="bg-gradient-to-tr from-neutral-950 to-stone-800 w-32 h-32 rounded-full shadow-2xl shadow-stone-800 border-white  border-dotted border-2  flex justify-center items-center ">
