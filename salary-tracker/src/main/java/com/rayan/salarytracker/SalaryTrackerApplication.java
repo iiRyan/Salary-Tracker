@@ -45,7 +45,7 @@ public class SalaryTrackerApplication {
 	// User user = userService.createUser("Rayan", "rayan@gmail.com", "pass1");
 	// User user1 = userService.createUser("jojo", "jojo@gmail.com", "pass1");
 
-	// Salary salary = salaryService.createSalary(1200, "November", user1);
+	// Salary salary = salaryService.createSalary(20000, "November", user1);
 	// Salary salary1 = salaryService.createSalary(12450, "March", user);
 
 	// Budget budget = budgetService.createBudget(500, "Rent", true, "STCPay",
