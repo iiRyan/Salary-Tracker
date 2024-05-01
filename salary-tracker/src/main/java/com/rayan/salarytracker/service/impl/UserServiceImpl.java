@@ -35,4 +35,9 @@ public class UserServiceImpl implements UserService {
         return userDao.save(new User(userName, userEmail, userPassword));
     }
 
+    @Override
+    public User findByUserId(Long userId) {
+        return userDao.findByUserId(userId);
+    }
+
 }

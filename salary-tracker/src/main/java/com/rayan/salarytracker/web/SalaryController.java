@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rayan.salarytracker.entity.Salary;
+import com.rayan.salarytracker.entity.User;
 import com.rayan.salarytracker.service.SalaryService;
+import com.rayan.salarytracker.service.UserService;
 
 @Controller
 @RequestMapping("salaries")
@@ -18,10 +20,11 @@ public class SalaryController {
 
     public final String path = "salary-views";
     private SalaryService salaryService;
+    private UserService userService;
 
-    public SalaryController(SalaryService salaryService) {
+    public SalaryController(SalaryService salaryService, UserService userService) {
         this.salaryService = salaryService;
-
+        this.userService = userService;
     }
 
     @GetMapping("/index")
@@ -49,6 +52,8 @@ public class SalaryController {
 
     @PostMapping("/save")
     public String save(Salary salary) {
+        User user = userService.findByUserId(1L);
+        salary.setUser(user);
         salaryService.updateSalary(salary);
         return "redirect:/salaries/index";
     }

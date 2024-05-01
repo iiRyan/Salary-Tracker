@@ -46,12 +46,12 @@ public class BudgetController {
 
     @PostMapping("/save")
     public String saveBudget(@RequestParam("salaryId") Long salaryId, Budget budget) {
-
         // Set the Salary object for the Budget
         Salary salary = salaryService.loadSalaryById(salaryId);
         budget.setSalary(salary);
 
         budgetService.createOrUpdateBudget(budget);
+
         return "redirect:/budgets/index?salaryId=" + salaryId;
     }
 
